@@ -15,6 +15,11 @@ pipeline {
                     sh 'mvn test -f tippspiel-arch-test/pom.xml'
                 }
             }
+            post {
+                always {
+                    junit 'target/test-reports/*.xml'
+                }
+            }
         }
     }
 }
