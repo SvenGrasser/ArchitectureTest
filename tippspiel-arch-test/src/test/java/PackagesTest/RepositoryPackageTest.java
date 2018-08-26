@@ -1,18 +1,15 @@
-package de.svennetz.grasser.tippspiel.test.archunit;
+package PackagesTest;
 
 import org.junit.Test;
 
-import com.tngtech.archunit.core.domain.JavaClasses;
-import com.tngtech.archunit.core.importer.ClassFileImporter;
 import com.tngtech.archunit.lang.ArchRule;
 
 import de.svennetz.base.test.archunit.PackageRules.RepositoryRules;
+import de.svennetz.grasser.tippspiel.test.archunit.ArchUnitBase;
 
-public class RepositoryPackageTest {
+public class RepositoryPackageTest extends ArchUnitBase {
 	@Test
 	public void repository_should_not_call_business() {
-		JavaClasses classes = new ClassFileImporter().importClasspath();
-
 		ArchRule rule = RepositoryRules.repository_should_not_call_business;
 		rule.check(classes);
 	}
@@ -20,9 +17,7 @@ public class RepositoryPackageTest {
 
 	@Test
 	public void repository_should_not_call_services() {
-		JavaClasses classes = new ClassFileImporter().importClasspath();
-
 		ArchRule rule = RepositoryRules.repository_should_not_call_services;
-		rule.check(classes);
+		rule.check(super.classes);
 	}
 }

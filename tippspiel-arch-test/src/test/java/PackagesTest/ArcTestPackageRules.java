@@ -1,4 +1,4 @@
-package de.svennetz.grasser.tippspiel.test.archunit;
+package PackagesTest;
 
 import org.junit.runner.RunWith;
 

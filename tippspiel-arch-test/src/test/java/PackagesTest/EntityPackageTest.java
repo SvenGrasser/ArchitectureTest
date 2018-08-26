@@ -1,35 +1,28 @@
-package de.svennetz.grasser.tippspiel.test.archunit;
+package PackagesTest;
 
 import org.junit.Test;
 
-import com.tngtech.archunit.core.domain.JavaClasses;
-import com.tngtech.archunit.core.importer.ClassFileImporter;
 import com.tngtech.archunit.lang.ArchRule;
 
 import de.svennetz.base.test.archunit.PackageRules.EntityRules;
+import de.svennetz.grasser.tippspiel.test.archunit.ArchUnitBase;
 
-public class EntityPackageTest {
+public class EntityPackageTest extends ArchUnitBase {
 	@Test
 	public void entity_should_not_call_business() {
-		JavaClasses classes = new ClassFileImporter().importClasspath();
-
 		ArchRule rule = EntityRules.entity_should_not_call_business;
-		rule.check(classes);
+		rule.check(super.classes);
 	}
 	
 	@Test
 	public void entity_should_not_call_repositories() {
-		JavaClasses classes = new ClassFileImporter().importClasspath();
-
 		ArchRule rule = EntityRules.entity_should_not_call_repositories;
-		rule.check(classes);
+		rule.check(super.classes);
 	}
 	
 	@Test
 	public void entity_should_not_call_services() {
-		JavaClasses classes = new ClassFileImporter().importClasspath();
-
 		ArchRule rule = EntityRules.entity_should_not_call_services;
-		rule.check(classes);
+		rule.check(super.classes);
 	}
 }
